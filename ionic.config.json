@@ -1,0 +1,7 @@
+{
+  "name": "genset-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
