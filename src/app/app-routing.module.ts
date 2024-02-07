@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DetailsComponent } from './details/details.component';
-import { AlertsComponent } from './alerts/alerts.component';
+import { DashboardPage } from './dashboard/dashboard.page'
+import { DetailsPage } from './details/details.page';
+import { AlertsPage } from './alerts/alerts.page';
 
 const routes: Routes = [
   {
@@ -15,16 +15,28 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    component: DashboardComponent,
+    component: DashboardPage,
     path: 'dashboard'
   },
   {
-    component: DetailsComponent,
+    component: DetailsPage,
     path: 'details'
   },
   {
-    component: AlertsComponent,
+    component: AlertsPage,
     path: 'alerts'
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'alerts',
+    loadChildren: () => import('./alerts/alerts.module').then( m => m.AlertsPageModule)
   },
 ];
 
