@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DashboardPage } from './dashboard/dashboard.page'
+import { AdminPage } from './admin/admin.page'
+import { ClientPage } from './client/client.page'
 import { DetailsPage } from './details/details.page';
 import { AlertsPage } from './alerts/alerts.page';
 
@@ -15,8 +16,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    component: DashboardPage,
-    path: 'dashboard'
+    component: AdminPage,
+    path: 'admin'
+  },
+  {
+    component: ClientPage,
+    path: 'client'
   },
   {
     component: DetailsPage,
@@ -27,8 +32,12 @@ const routes: Routes = [
     path: 'alerts'
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'client',
+    loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
   },
   {
     path: 'details',

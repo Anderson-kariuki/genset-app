@@ -1,0 +1,96 @@
+<ion-header [translucent]="true" style="background-color: transparent;">
+  <ion-toolbar>
+    <div class="component-1" style="background-color:#ffffff;">
+      <img src="assets/lectrotel_logo.png" alt="Logo">
+      <ion-icon class="ion-padding" name="person" color="dark"></ion-icon>
+      <ion-icon name="home" class="ion-padding" color="dark"></ion-icon>
+      <ion-icon name="list" class="dash" color="dark"></ion-icon>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-with-white-background">
+  <p class="text-1">generators</p>
+  <p class="text-2">total number of generators: 3</p>
+
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title>Generator</ion-card-title>
+      <ion-card-subtitle>Gen Name</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="6">
+          <ion-list lines="none">
+            <ion-item-group>
+              <ion-item>
+                <ion-thumbnail>
+                  <img alt="Fuel Level" src="assets/fuel.png" />
+                </ion-thumbnail>
+                <ion-label>Fuel Status</ion-label>
+              </ion-item>
+              <ion-badge  [color]="fuelS === 'ok' ? 'success' : 'danger'">{{fuelS}} </ion-badge >
+            </ion-item-group>
+       
+            <ion-item-group>
+              <ion-item>
+                <ion-thumbnail>
+                  <img alt="Temperature" src="assets/temp.png" />
+                </ion-thumbnail>
+                <ion-label >Coolant Status</ion-label>
+              </ion-item>
+              <ion-badge [color]="coolantS === 'ok' ? 'success' : 'danger'"> {{coolantS}} </ion-badge >
+            </ion-item-group>
+
+            <ion-item-group>
+              <ion-item>
+                <ion-thumbnail>
+                  <img alt="Status" src="assets/ststem.png" />
+                </ion-thumbnail>
+                <ion-label >Charger Status</ion-label>
+              </ion-item>
+              <ion-badge  [color]="chargerS === 'ok' ? 'success' : 'danger'"> {{chargerS}} </ion-badge >
+            </ion-item-group>
+          </ion-list>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-list lines="none">
+            <ion-item-group>
+              <ion-item>
+                <ion-thumbnail>
+                  <img alt="Load" src="assets/lightning.png" />
+                </ion-thumbnail>
+                <ion-label>Load Status</ion-label>
+              </ion-item>
+              <ion-badge  [color]="loadS === 'ok' ? 'success' : 'danger'"> {{loadS}} </ion-badge >
+            </ion-item-group>
+
+            <ion-item-group>
+              <ion-item>
+                <ion-thumbnail>
+                  <img alt="Alarm" src="assets/alat.png" />
+                </ion-thumbnail>
+                <ion-label>Common Alarm</ion-label>
+              </ion-item>
+              <ion-badge  [color]="alarmStatus === 'ok' ? 'success' : 'danger'">{{alarmStatus}} </ion-badge >
+            </ion-item-group>
+ 
+            <ion-item-group>
+              <ion-item class="online">
+                <ion-label class="online">status: </ion-label>
+                <ion-badge class="online" [color]="online === 'online' ? 'success' : 'danger'"> {{online}} </ion-badge >
+              </ion-item>
+            </ion-item-group>
+
+            <ion-button fill="clear">fuel history</ion-button>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
