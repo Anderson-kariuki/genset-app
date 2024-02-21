@@ -17,11 +17,11 @@ const routes: Routes = [
   },
   {
     component: AdminPage,
-    path: 'admin'
+    path: ''
   },
   {
     component: ClientPage,
-    path: 'client'
+    path: ''
   },
   {
     component: DetailsPage,
@@ -32,11 +32,11 @@ const routes: Routes = [
     path: 'alerts'
   },
   {
-    path: 'admin',
+    path: '',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
-    path: 'client',
+    path: '',
     loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
   },
   {

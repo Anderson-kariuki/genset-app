@@ -11,12 +11,12 @@ const routes: Routes = [
   {
     path: '', component: ClientPage,
 
-    data: {
-      title: '...'
-    },
+    // data: {
+    //   title: '...'
+    // },
     children: [
       {
-        path: 'admin/dashboard',
+        path: 'client/dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardPageModule)
       }

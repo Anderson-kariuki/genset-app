@@ -1,0 +1,191 @@
+ion-item {
+    --padding-start: 0;
+}
+
+.component-1 img {
+    height: 5vh;
+    width: auto;
+    box-shadow: 5px 5px 10px 0px gray;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.text-1 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 24px;
+    font-family: Outfit;
+    line-height: auto;
+    color: #000000;
+}
+
+.component-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Vertically center-align */
+    height: 100%;
+    /* Ensures the container expands to full height */
+    padding-bottom: 10px;
+}
+
+.dash {
+    margin-left: auto;
+}
+
+.text-2 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.content-with-white-background {
+    --ion-background-color: #ffffff;
+    /* Set the background color of ion-content to white */
+}
+
+.lets--icons-:img--box {
+    height: 26px;
+    width: 24px;
+    background-color: #ffffff;
+}
+
+.text-6 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 24px;
+    font-family: Outfit;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-7 {
+    transform: rotate(-1deg);
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-8 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-9 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-1-0 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-1-1 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-1-2 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-1-3 {
+    transform: rotate(-1deg);
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+}
+
+.text-1-4 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #0093e0;
+}
+
+ion-toggle {
+    padding: 12px;
+  
+    --handle-width: 25px;
+    --handle-height: 27px;
+    --handle-max-height: auto;
+    --handle-spacing: 6px;
+  
+    contain: none;
+  }
+  
+  ion-toggle::part(track),
+  ion-toggle.toggle-checked::part(track) {
+    height: 10px;
+    width: 65px;
+  
+    background: #ddd;
+  
+    /* Required for iOS handle to overflow the height of the track */
+    overflow: visible;
+  }
+  
+  ion-toggle::part(handle) {
+    background: #eb7769;
+  
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  
+  ion-toggle.toggle-checked::part(handle) {
+    background: #95c34e;
+  }
+
+  ion-badge {
+    margin-left: 70px;
+  }
+  ion-label {
+    padding-left: 10px;
+  }
+
+  ion-item.online {
+    display: flex;
+    align-items: left; /* Center items vertically */
+  }
+  
+  ion-label.online {
+    flex: 1; /* Allow label to expand and push badge to the right */
+  }
+  
+  ion-badge.online {
+    flex-shrink: 0; /* Prevent badge from shrinking */
+    margin-left: 0px;
+  }

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.page.html',
   styleUrls: ['./client.page.scss'],
 })
-export class ClientPage implements OnInit {
+export class ClientPage {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
