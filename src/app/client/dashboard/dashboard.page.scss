@@ -138,54 +138,57 @@ ion-item {
 
 ion-toggle {
     padding: 12px;
-  
+
     --handle-width: 25px;
     --handle-height: 27px;
     --handle-max-height: auto;
     --handle-spacing: 6px;
-  
+
     contain: none;
-  }
-  
-  ion-toggle::part(track),
-  ion-toggle.toggle-checked::part(track) {
+}
+
+ion-toggle::part(track),
+ion-toggle.toggle-checked::part(track) {
     height: 10px;
     width: 65px;
-  
+
     background: #ddd;
-  
+
     /* Required for iOS handle to overflow the height of the track */
     overflow: visible;
-  }
-  
-  ion-toggle::part(handle) {
+}
+
+ion-toggle::part(handle) {
     background: #eb7769;
-  
+
     border-radius: 4px;
     box-shadow: none;
-  }
-  
-  ion-toggle.toggle-checked::part(handle) {
+}
+
+ion-toggle.toggle-checked::part(handle) {
     background: #95c34e;
-  }
+}
 
-  ion-badge {
+ion-badge {
     margin-left: 70px;
-  }
-  ion-label {
-    padding-left: 10px;
-  }
+}
 
-  ion-item.online {
+ion-label {
+    padding-left: 10px;
+}
+
+.card-header {
     display: flex;
-    align-items: left; /* Center items vertically */
-  }
-  
-  ion-label.online {
-    flex: 1; /* Allow label to expand and push badge to the right */
-  }
-  
-  ion-badge.online {
-    flex-shrink: 0; /* Prevent badge from shrinking */
-    margin-left: 0px;
-  }
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header-left {
+    flex: 1;
+}
+
+.card-header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}

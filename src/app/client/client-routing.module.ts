@@ -11,9 +11,9 @@ const routes: Routes = [
   {
     path: '', component: ClientPage,
 
-    // data: {
-    //   title: '...'
-    // },
+    data: {
+      title: '...'
+    },
     children: [
       {
         path: 'client/dashboard',

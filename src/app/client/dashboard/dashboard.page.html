@@ -2,9 +2,9 @@
   <ion-toolbar>
     <div class="component-1" style="background-color:#ffffff;">
       <img src="assets/lectrotel_logo.png" alt="Logo">
-      <ion-icon class="ion-padding" name="person" color="dark"></ion-icon>
-      <ion-icon name="home" class="ion-padding" color="dark"></ion-icon>
-      <ion-icon name="list" class="dash" color="dark"></ion-icon>
+      <ion-icon class="ion-padding" name="person"></ion-icon>
+      <ion-icon name="home" class="ion-padding"></ion-icon>
+      <ion-icon name="list" class="dash"></ion-icon>
     </div>
 
   </ion-toolbar>
@@ -12,12 +12,21 @@
 
 <ion-content [fullscreen]="true" class="content-with-white-background">
   <p class="text-1">generators</p>
-  <p class="text-2">total number of generators: 3</p>
+  <p class="text-2">total number of generators: {{generator_tally}}</p>
 
-  <ion-card color="light">
+  <ion-card *ngFor="let clientDashTable of clientDashTable1">
     <ion-card-header>
       <ion-card-title>Generator</ion-card-title>
-      <ion-card-subtitle>Gen Name</ion-card-subtitle>
+      <ion-card-subtitle class="card-header">
+        <div class="card-header-left">{{clientDashTable.generator_name}}</div>
+      <div class="card-header-right">
+        <ion-item>
+          <ion-label>status: </ion-label>
+          <ion-badge [color]="clientDashTable.online === 'online' ? 'success' : 'danger'">
+            {{clientDashTable.online}} </ion-badge>
+        </ion-item>
+      </div>
+    </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <ion-row>
@@ -30,27 +39,30 @@
                 </ion-thumbnail>
                 <ion-label>Fuel Status</ion-label>
               </ion-item>
-              <ion-badge  [color]="fuelS === 'ok' ? 'success' : 'danger'">{{fuelS}} </ion-badge >
-            </ion-item-group>
-       
-            <ion-item-group>
-              <ion-item>
-                <ion-thumbnail>
-                  <img alt="Temperature" src="assets/temp.png" />
-                </ion-thumbnail>
-                <ion-label >Coolant Status</ion-label>
-              </ion-item>
-              <ion-badge [color]="coolantS === 'ok' ? 'success' : 'danger'"> {{coolantS}} </ion-badge >
+              <ion-badge [color]="clientDashTable.fuel ? 'danger' : 'success'">{{clientDashTable.fuel ? 'low' : 'Ok'}}
+              </ion-badge>
             </ion-item-group>
 
             <ion-item-group>
               <ion-item>
                 <ion-thumbnail>
-                  <img alt="Status" src="assets/ststem.png" />
+                  <img alt="Temperature" src="assets/temp.png" />
                 </ion-thumbnail>
-                <ion-label >Charger Status</ion-label>
+                <ion-label>Coolant Status</ion-label>
               </ion-item>
-              <ion-badge  [color]="chargerS === 'ok' ? 'success' : 'danger'"> {{chargerS}} </ion-badge >
+              <ion-badge [color]="clientDashTable.coolant ? 'danger' : 'success'"> {{clientDashTable.coolant ? 'low' :
+                'Ok'}} </ion-badge>
+            </ion-item-group>
+
+            <ion-item-group>
+              <ion-item>
+                <ion-thumbnail>
+                  <img alt="Status" src="assets/load.png" />
+                </ion-thumbnail>
+                <ion-label>Charger Status</ion-label>
+              </ion-item>
+              <ion-badge [color]="clientDashTable.charger_ac_failure ? 'danger' : 'success'">
+                {{clientDashTable.charger_ac_failure ? 'YES' : 'NO'}} </ion-badge>
             </ion-item-group>
           </ion-list>
         </ion-col>
@@ -64,7 +76,8 @@
                 </ion-thumbnail>
                 <ion-label>Load Status</ion-label>
               </ion-item>
-              <ion-badge  [color]="loadS === 'ok' ? 'success' : 'danger'"> {{loadS}} </ion-badge >
+              <ion-badge [color]="clientDashTable.load ?  'danger' : 'success'"> {{clientDashTable.load ? 'no load' :
+                'Ok'}} </ion-badge>
             </ion-item-group>
 
             <ion-item-group>
@@ -74,14 +87,8 @@
                 </ion-thumbnail>
                 <ion-label>Common Alarm</ion-label>
               </ion-item>
-              <ion-badge  [color]="alarmStatus === 'ok' ? 'success' : 'danger'">{{alarmStatus}} </ion-badge >
-            </ion-item-group>
- 
-            <ion-item-group>
-              <ion-item class="online">
-                <ion-label class="online">status: </ion-label>
-                <ion-badge class="online" [color]="online === 'online' ? 'success' : 'danger'"> {{online}} </ion-badge >
-              </ion-item>
+              <ion-badge [color]="clientDashTable.common_alarm ? 'danger' : 'success'">{{clientDashTable.common_alarm ?
+                'Yes' : 'No'}} </ion-badge>
             </ion-item-group>
 
             <ion-button fill="clear">fuel history</ion-button>

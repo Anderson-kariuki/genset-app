@@ -38,7 +38,7 @@ export class HomePage {
         localStorage.setItem('token', this.data.access_token)
         console.log("token", this.data.access_token)
         // storing the data for later use 
-        localStorage.setItem('currentUser', this.data)
+        localStorage.setItem('currentUser', JSON.stringify(this.data))
 
         if (this.data.access_token) {
           this.toastr.success('sucessfully logged in user', 'Success!!!', {
