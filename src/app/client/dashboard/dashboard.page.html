@@ -2,31 +2,69 @@
   <ion-toolbar>
     <div class="component-1" style="background-color:#ffffff;">
       <img src="assets/lectrotel_logo.png" alt="Logo">
-      <ion-icon class="ion-padding" name="person"></ion-icon>
-      <ion-icon name="home" class="ion-padding"></ion-icon>
-      <ion-icon name="list" class="dash"></ion-icon>
+      <button (click)="goToHome()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
+        <ion-icon name="person"></ion-icon>
+      </button>
+      <button (click)="goToDashboard()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
+        <ion-icon name="home"></ion-icon>
+      </button>
+      <button class="right-aligned" (click)="goToMenu()">
+        <ion-icon name="list" class="dash"></ion-icon>
+      </button>
     </div>
 
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="content-with-white-background">
-  <p class="text-1">generators</p>
-  <p class="text-2">total number of generators: {{generator_tally}}</p>
+<ion-content [fullscreen]="true" style="position: relative;">
+
+  <ion-card class="popup" *ngIf="showDashboard">
+    <ion-card-header>
+      <ion-card-title class="text-1">{{name}}</ion-card-title>
+      <ion-card-subtitle class="text-26">{{user}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item (click)="onDashboardClick()">
+          <ion-icon name="mail"></ion-icon>
+          <ion-label class="text-2">Dashboard</ion-label>
+        </ion-item>
+
+        <ion-item (click)="onDetailsClick()">
+          <ion-icon name="expand"></ion-icon>
+          <ion-label class="text-2">Details</ion-label>
+        </ion-item>
+
+        <ion-item (click)="onAlertsClick()">
+          <ion-icon name="alert-circle"></ion-icon>
+          <ion-label class="text-2">Alerts</ion-label>
+        </ion-item>
+
+        <ion-item lines="none" (click)="onLogoutClick()">
+          <ion-icon name="log-out"></ion-icon>
+          <ion-label class="text-2">Logout</ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="line-2"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <p class="text-1" style="padding-left: 10px;">generators</p>
+  <p class="text-2" style="padding-left: 10px;">total number of generators: {{generator_tally}}</p>
 
   <ion-card *ngFor="let clientDashTable of clientDashTable1">
     <ion-card-header>
       <ion-card-title>Generator</ion-card-title>
       <ion-card-subtitle class="card-header">
         <div class="card-header-left">{{clientDashTable.generator_name}}</div>
-      <div class="card-header-right">
-        <ion-item>
-          <ion-label>status: </ion-label>
-          <ion-badge [color]="clientDashTable.online === 'online' ? 'success' : 'danger'">
-            {{clientDashTable.online}} </ion-badge>
-        </ion-item>
-      </div>
-    </ion-card-subtitle>
+        <div class="card-header-right">
+          <ion-item>
+            <ion-label>status: </ion-label>
+            <ion-badge [color]="clientDashTable.online === 'online' ? 'success' : 'danger'">
+              {{clientDashTable.online}} </ion-badge>
+          </ion-item>
+        </div>
+      </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <ion-row>

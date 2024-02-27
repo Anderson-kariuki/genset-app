@@ -32,6 +32,11 @@ export class ApisService {
     return this.http.get<ListGenerator>(`${this.URL}listGeneratorsOne/${account_id}`, this.pasetoHeader());
   }
 
+  // service to get a specified user given the ID 
+  getUserData(user_id: number) {
+    return this.http.get<any>(`${this.URL}getUser/${user_id}`, this.pasetoHeader());
+  }
+
   // Function to query the account_users table and get the account ID
   getAccountID(account_id: number) {
     return this.http.get<ListAccount>(`${this.URL}getAccountUser/${account_id}`, this.pasetoHeader());

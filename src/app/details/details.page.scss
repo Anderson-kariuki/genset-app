@@ -1,0 +1,56 @@
+.component-1 {
+  // position: relative;
+  display: flex;
+  align-content: center;
+  height: 100%;
+  /* Ensures the container expands to full height */
+  padding-bottom: 10px;
+}
+
+.component-1 img {
+  height: 5vh;
+  width: auto;
+  box-shadow: 5px 5px 10px 0px gray;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+/* Specific class for the item to align right */
+.right-aligned {
+  margin-left: auto;
+  background-color: #ffffff;
+  padding-right: 10px;
+  padding-right: 20px;
+}
+
+.line-2 {
+  height: 0px;
+  width: 245px;
+  border: 1px solid rgba(0, 0, 0, 0.6399999856948853);
+}
+
+.popup {
+  width: 245px;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  /* Aligns the element to the right edge of its closest positioned ancestor */
+}
+
+.text-26 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Times New Roman;
+  line-height: auto;
+  color: #000000;
+}
+
+.text-1 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 24px;
+  font-family: Outfit;
+  line-height: auto;
+  color: #000000;
+}

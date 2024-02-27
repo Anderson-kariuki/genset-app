@@ -1,6 +1,7 @@
 import { AfterContentInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ApisService } from '../../services/apis.service';
-import { ListGenerator, UserResponse, ListAccount, ClientDashboard, ClientDashboardTable } from 'src/app/models';
+import { ListGenerator, UserResponse, ListAccount } from 'src/app/models';
+import { Router } from '@angular/router';
 
 export interface ClientDashboardTable1 {
   generator_id: number;
@@ -25,6 +26,9 @@ export class DashboardPage implements OnInit, AfterContentInit {
   dataAlerts: ClientDashboardTable1[] = [];
   clientDashTable1: any[] = [];
   dataLoading: boolean = true;
+  showDashboard: number= 0 ;
+  user: any;
+  name: any;
 
   account_id: number = 0;
   generator_tally: number = 0;
@@ -43,7 +47,8 @@ export class DashboardPage implements OnInit, AfterContentInit {
 
   constructor(
     private generatorService: ApisService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,15 +56,69 @@ export class DashboardPage implements OnInit, AfterContentInit {
     this.getLoggedinUser();
   }
 
+  goToHome() {
+    this.showDashboard = 0;
+    this.router.navigate(['']);
+  }
+
+  goToDashboard(){
+    this.showDashboard = 0;
+    this.router.navigate(['client/dashboard']);
+  }
+  goToMenu(){
+    this.showDashboard++
+    if (this.showDashboard >= 2){
+      this.showDashboard = 0;
+    }
+  }
+
+  onDashboardClick(){
+    this.showDashboard = 0;
+    this.router.navigate(['client/dashboard']);
+  }
+
+  onDetailsClick(){
+    this.showDashboard = 0;
+    this.router.navigate(['details']);
+  }
+
+  onAlertsClick(){
+    this.showDashboard = 0;
+    this.router.navigate(['alerts']);
+  }
+
+  onLogoutClick(){
+    this.showDashboard = 0;
+    this.router.navigate(['']);
+  }
+
   getLoggedinUser() {
     // Getting the logged in user ID.
     const currentUserJson = localStorage.getItem('currentUser');
     const currentUser: UserResponse = currentUserJson ? JSON.parse(currentUserJson) : null;
 
-    console.log("the logged user is:", currentUser.user.user_id)
+    // console.log("the logged user is:", currentUser.user.user_id)
 
     // searching the account-users table
     this.getAccountID(currentUser.user.user_id);
+
+    // Getting the logged in user .
+    const currentJson = localStorage.getItem('loggedUser');
+    const current: any = currentJson ? JSON.parse(currentJson) : null;
+    // console.log("current:", current)
+    this.user = current.email
+    this.generatorService.getUserData(currentUser.user.user_id).subscribe((result) => {
+      console.log(result);
+      this.name = result.user_name;
+      console.log("name:", this.name);
+      localStorage.setItem('userInfo', JSON.stringify(this.getUserInfo()));
+    })
+  }
+
+  getUserInfo(): { uName: string; mail: string } {
+    let uName = this.name;
+    let mail = this.user;
+    return { uName, mail }; // Returning an object with two properties
   }
 
   getAccountID(user_id: number) {
@@ -87,9 +146,9 @@ export class DashboardPage implements OnInit, AfterContentInit {
     // console.log(meterData1 )
     var i = 0;
 
-    while ( meterData1[i] ) {
+    while (meterData1[i]) {
       // Find if this Generator is online or offline
-      this.getOnlineStatus( meterData1[i].generator_id ) ;
+      this.getOnlineStatus(meterData1[i].generator_id);
       i++;
     }
     // Get the number of generators under the account linked to the user
@@ -106,13 +165,13 @@ export class DashboardPage implements OnInit, AfterContentInit {
         // console.log("online data:", data);
         // populating the table
         ///**
-        console.log(data.online_status);
-        if(data.online_status >= 0 && data.online_status <= 5){
-          this.online [this.j] = "online";
-        }else{
-          this.online [this.j] = "offline";
+        // console.log(data.online_status);
+        if (data.online_status >= 0 && data.online_status <= 5) {
+          this.online[this.j] = "online";
+        } else {
+          this.online[this.j] = "offline";
         }
-        
+
         this.low_fuel_level[this.j] = data.genset_pannel[0]; // bit 0
         this.low_coolant_level[this.j] = data.genset_pannel[1]; //bit 1
         this.fail_to_start[this.j] = data.genset_pannel[8]; // bit 9
@@ -138,7 +197,7 @@ export class DashboardPage implements OnInit, AfterContentInit {
 
         // this.clientDashTable1[this.j] = this.dataAlerts[this.j];
         this.clientDashTable1 = this.dataAlerts;
-        console.log("clientDashTable1", this.clientDashTable1);
+        // console.log("clientDashTable1", this.clientDashTable1);
         this.j++;
 
       },

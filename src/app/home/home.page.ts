@@ -31,6 +31,7 @@ export class HomePage {
 
   signIn() {
     console.log(this.signinForm.value);
+    localStorage.setItem('loggedUser', JSON.stringify(this.signinForm.value));
     this.Login.login(this.signinForm.value).subscribe({
       next: result => {
         this.data = result;
@@ -43,7 +44,7 @@ export class HomePage {
         if (this.data.access_token) {
           this.toastr.success('sucessfully logged in user', 'Success!!!', {
             closeButton: true,
-            positionClass: 'toast-top-right'
+            positionClass: 'toast-bottom-right'
           });
 
           if (this.data.user.role_id === 'Client') {
@@ -59,7 +60,7 @@ export class HomePage {
         this.loading = false;
         this.toastr.warning('Invalid Credentials.', 'Error!', {
           closeButton: true,
-          positionClass: 'toast-top-right'
+          positionClass: 'toast-bottom-right'
         });
         // this.loading = false;
       },

@@ -1,194 +1,135 @@
 ion-item {
-    --padding-start: 0;
+  --padding-start: 0;
 }
 
 .component-1 img {
-    height: 5vh;
-    width: auto;
-    box-shadow: 5px 5px 10px 0px gray;
-    margin-top: 10px;
-    margin-left: 5px;
+  height: 5vh;
+  width: auto;
+  box-shadow: 5px 5px 10px 0px gray;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 .text-1 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 24px;
-    font-family: Outfit;
-    line-height: auto;
-    color: #000000;
+  text-align: left;
+  vertical-align: top;
+  font-size: 24px;
+  font-family: Outfit;
+  line-height: auto;
+  color: #000000;
 }
 
 .component-1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Vertically center-align */
-    height: 100%;
-    /* Ensures the container expands to full height */
-    padding-bottom: 10px;
+  // position: relative;
+  display: flex;
+  align-content: center;
+  height: 100%;
+  /* Ensures the container expands to full height */
+  padding-bottom: 10px;
+}
+
+/* Specific class for the item to align right */
+.right-aligned {
+  margin-left: auto;
+  background-color:#ffffff; 
+  padding-right: 10px;
+  padding-right: 20px;
 }
 
 .dash {
-    margin-left: auto;
-}
-
-.text-2 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.content-with-white-background {
-    --ion-background-color: #ffffff;
-    /* Set the background color of ion-content to white */
+  margin-left: auto;
 }
 
 .lets--icons-:img--box {
-    height: 26px;
-    width: 24px;
-    background-color: #ffffff;
+  height: 26px;
+  width: 24px;
+  background-color: #ffffff;
 }
 
-.text-6 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 24px;
-    font-family: Outfit;
-    line-height: auto;
-    color: #000000;
+.text-2 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Roboto;
+  line-height: auto;
+  color: #000000;
 }
 
-.text-7 {
-    transform: rotate(-1deg);
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-8 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-9 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-1-0 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-1-1 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-1-2 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-1-3 {
-    transform: rotate(-1deg);
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-}
-
-.text-1-4 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #0093e0;
+.text-26 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Times New Roman;
+  line-height: auto;
+  color: #000000;
 }
 
 ion-toggle {
-    padding: 12px;
+  padding: 12px;
 
-    --handle-width: 25px;
-    --handle-height: 27px;
-    --handle-max-height: auto;
-    --handle-spacing: 6px;
+  --handle-width: 25px;
+  --handle-height: 27px;
+  --handle-max-height: auto;
+  --handle-spacing: 6px;
 
-    contain: none;
+  contain: none;
 }
 
 ion-toggle::part(track),
 ion-toggle.toggle-checked::part(track) {
-    height: 10px;
-    width: 65px;
+  height: 10px;
+  width: 65px;
 
-    background: #ddd;
+  background: #ddd;
 
-    /* Required for iOS handle to overflow the height of the track */
-    overflow: visible;
+  /* Required for iOS handle to overflow the height of the track */
+  overflow: visible;
 }
 
 ion-toggle::part(handle) {
-    background: #eb7769;
+  background: #eb7769;
 
-    border-radius: 4px;
-    box-shadow: none;
+  border-radius: 4px;
+  box-shadow: none;
 }
 
 ion-toggle.toggle-checked::part(handle) {
-    background: #95c34e;
+  background: #95c34e;
 }
 
 ion-badge {
-    margin-left: 70px;
+  margin-left: 70px;
 }
 
 ion-label {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-header-left {
-    flex: 1;
+  flex: 1;
 }
 
 .card-header-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.line-2 {
+  height: 0px;
+  width: 245px;
+  border: 1px solid rgba(0, 0, 0, 0.6399999856948853);
+}
+
+.popup {
+  width: 245px;
+  position: absolute;
+  z-index: 2;
+  right: 0; /* Aligns the element to the right edge of its closest positioned ancestor */
 }
