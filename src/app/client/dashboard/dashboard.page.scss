@@ -2,6 +2,7 @@ ion-item {
   --padding-start: 0;
 }
 
+// sizing and positioning the logo ion on the toolbar
 .component-1 img {
   height: 5vh;
   width: auto;
@@ -10,17 +11,17 @@ ion-item {
   margin-left: 5px;
 }
 
+// subheadings font settings
 .text-1 {
   text-align: left;
   vertical-align: top;
   font-size: 24px;
   font-family: Outfit;
   line-height: auto;
-  color: #000000;
 }
 
+// setting up the toolbar, please take note of the stylings also added to the individual elements on the html file they work together
 .component-1 {
-  // position: relative;
   display: flex;
   align-content: center;
   height: 100%;
@@ -40,19 +41,20 @@ ion-item {
   margin-left: auto;
 }
 
+// sets icon image box 
 .lets--icons-:img--box {
   height: 26px;
   width: 24px;
   background-color: #ffffff;
 }
 
+// common text font setup
 .text-2 {
   text-align: left;
   vertical-align: top;
   font-size: 16px;
   font-family: Roboto;
   line-height: auto;
-  color: #000000;
 }
 
 .text-26 {
@@ -61,40 +63,6 @@ ion-item {
   font-size: 16px;
   font-family: Times New Roman;
   line-height: auto;
-  color: #000000;
-}
-
-ion-toggle {
-  padding: 12px;
-
-  --handle-width: 25px;
-  --handle-height: 27px;
-  --handle-max-height: auto;
-  --handle-spacing: 6px;
-
-  contain: none;
-}
-
-ion-toggle::part(track),
-ion-toggle.toggle-checked::part(track) {
-  height: 10px;
-  width: 65px;
-
-  background: #ddd;
-
-  /* Required for iOS handle to overflow the height of the track */
-  overflow: visible;
-}
-
-ion-toggle::part(handle) {
-  background: #eb7769;
-
-  border-radius: 4px;
-  box-shadow: none;
-}
-
-ion-toggle.toggle-checked::part(handle) {
-  background: #95c34e;
 }
 
 ion-badge {
@@ -130,6 +98,7 @@ ion-label {
 .popup {
   width: 245px;
   position: absolute;
-  z-index: 2;
+  // make it display on top of the page
+  z-index: 2;  
   right: 0; /* Aligns the element to the right edge of its closest positioned ancestor */
 }

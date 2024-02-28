@@ -31,7 +31,9 @@ export class HomePage {
 
   signIn() {
     console.log(this.signinForm.value);
+    // storing the form values for access on the DashboardPage 
     localStorage.setItem('loggedUser', JSON.stringify(this.signinForm.value));
+    // accessing the api calls for making the login query to the database 
     this.Login.login(this.signinForm.value).subscribe({
       next: result => {
         this.data = result;
@@ -41,6 +43,7 @@ export class HomePage {
         // storing the data for later use 
         localStorage.setItem('currentUser', JSON.stringify(this.data))
 
+        // toast is like a popup alert message to notify you of something and this is how it is set 
         if (this.data.access_token) {
           this.toastr.success('sucessfully logged in user', 'Success!!!', {
             closeButton: true,

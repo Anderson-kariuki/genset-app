@@ -3,6 +3,7 @@ import { ApisService } from '../../services/apis.service';
 import { ListGenerator, UserResponse, ListAccount } from 'src/app/models';
 import { Router } from '@angular/router';
 
+// this interface is used to store the data to be displayed on my fontend 
 export interface ClientDashboardTable1 {
   generator_id: number;
   generator_name: string;
@@ -21,12 +22,13 @@ export interface ClientDashboardTable1 {
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit, AfterContentInit {
+  // different data types 
   online: string[] = [""];
 
   dataAlerts: ClientDashboardTable1[] = [];
   clientDashTable1: any[] = [];
   dataLoading: boolean = true;
-  showDashboard: number= 0 ;
+  showDashboard: number = 0;
   user: any;
   name: any;
 
@@ -61,39 +63,39 @@ export class DashboardPage implements OnInit, AfterContentInit {
     this.router.navigate(['']);
   }
 
-  goToDashboard(){
+  goToDashboard() {
     this.showDashboard = 0;
     this.router.navigate(['client/dashboard']);
   }
-  goToMenu(){
+  goToMenu() {
     this.showDashboard++
-    if (this.showDashboard >= 2){
+    if (this.showDashboard >= 2) {
       this.showDashboard = 0;
     }
   }
 
-  onDashboardClick(){
+  onDashboardClick() {
     this.showDashboard = 0;
     this.router.navigate(['client/dashboard']);
   }
 
-  onDetailsClick(){
+  onDetailsClick() {
     this.showDashboard = 0;
     this.router.navigate(['details']);
   }
 
-  onAlertsClick(){
+  onAlertsClick() {
     this.showDashboard = 0;
     this.router.navigate(['alerts']);
   }
 
-  onLogoutClick(){
+  onLogoutClick() {
     this.showDashboard = 0;
     this.router.navigate(['']);
   }
 
   getLoggedinUser() {
-    // Getting the logged in user ID.
+    // Getting the logged in user ID. This data was stored after login in my homepage. The details given by the response
     const currentUserJson = localStorage.getItem('currentUser');
     const currentUser: UserResponse = currentUserJson ? JSON.parse(currentUserJson) : null;
 
@@ -102,30 +104,35 @@ export class DashboardPage implements OnInit, AfterContentInit {
     // searching the account-users table
     this.getAccountID(currentUser.user.user_id);
 
-    // Getting the logged in user .
+    // Getting the logged in user. This data was stored after login in my homepage. The details entered
     const currentJson = localStorage.getItem('loggedUser');
     const current: any = currentJson ? JSON.parse(currentJson) : null;
     // console.log("current:", current)
     this.user = current.email
+    // using this api to ger the user data so that I can extract username from it 
     this.generatorService.getUserData(currentUser.user.user_id).subscribe((result) => {
       console.log(result);
       this.name = result.user_name;
       console.log("name:", this.name);
+      // after getting the username I want to store the information to local storage for me to access it in my various pages 
       localStorage.setItem('userInfo', JSON.stringify(this.getUserInfo()));
     })
   }
 
+  // I want to use this funtion to combine both the username and email after getting them, for storage to be refered later 
   getUserInfo(): { uName: string; mail: string } {
     let uName = this.name;
     let mail = this.user;
     return { uName, mail }; // Returning an object with two properties
   }
 
+  // this fuctions is used to call an api that will give data about the account including it's id. See the data given by the reply from the list account type in my users.ts models 
   getAccountID(user_id: number) {
     return this.generatorService.getAccountID(user_id).subscribe(
       (accountData: ListAccount) => this.handleData2(accountData));
   }
 
+  // this function takes the data given as a response by the api called by the getAccountId and uses this data to extract the account id 
   private handleData2(accountData: ListAccount) {
     this.account_id = accountData.account_id;
 

@@ -1,7 +1,9 @@
 <ion-header [translucent]="true" style="background-color: transparent;">
+  <!-- client dashboardpage toolbar, also repeated in the other pages apart frome the home page -->
   <ion-toolbar>
     <div class="component-1" style="background-color:#ffffff;">
       <img src="assets/lectrotel_logo.png" alt="Logo">
+      <!-- take note of the click events of the various button  -->
       <button (click)="goToHome()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
         <ion-icon name="person"></ion-icon>
       </button>
@@ -17,14 +19,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" style="position: relative;">
-
+  <!-- only show the popup card if the showDashboard value in 1  -->
   <ion-card class="popup" *ngIf="showDashboard">
     <ion-card-header>
+      <!-- this part shows the username and email of the logged account on the popup list display -->
       <ion-card-title class="text-1">{{name}}</ion-card-title>
       <ion-card-subtitle class="text-26">{{user}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
+        <!-- take note of the click events of the various button  -->
         <ion-item (click)="onDashboardClick()">
           <ion-icon name="mail"></ion-icon>
           <ion-label class="text-2">Dashboard</ion-label>
@@ -49,6 +53,7 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- the less detailed generators' data is displayed here using the for loop below -->
   <p class="text-1" style="padding-left: 10px;">generators</p>
   <p class="text-2" style="padding-left: 10px;">total number of generators: {{generator_tally}}</p>
 
@@ -60,6 +65,7 @@
         <div class="card-header-right">
           <ion-item>
             <ion-label>status: </ion-label>
+            <!-- will add a green background color to the badge if the statement is true and red if the statement is false -->
             <ion-badge [color]="clientDashTable.online === 'online' ? 'success' : 'danger'">
               {{clientDashTable.online}} </ion-badge>
           </ion-item>
@@ -67,6 +73,7 @@
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
+      <!-- the ion-row and a column size of 6 is used to plit the table to have 2 columns on the main view -->
       <ion-row>
         <ion-col size="6">
           <ion-list lines="none">
@@ -77,6 +84,7 @@
                 </ion-thumbnail>
                 <ion-label>Fuel Status</ion-label>
               </ion-item>
+              <!-- will add a green background color to the badge if the statement is true and red if the statement is false -->
               <ion-badge [color]="clientDashTable.fuel ? 'danger' : 'success'">{{clientDashTable.fuel ? 'low' : 'Ok'}}
               </ion-badge>
             </ion-item-group>
@@ -88,6 +96,7 @@
                 </ion-thumbnail>
                 <ion-label>Coolant Status</ion-label>
               </ion-item>
+              <!-- will add a green background color to the badge if the statement is true and red if the statement is false -->
               <ion-badge [color]="clientDashTable.coolant ? 'danger' : 'success'"> {{clientDashTable.coolant ? 'low' :
                 'Ok'}} </ion-badge>
             </ion-item-group>
@@ -99,6 +108,7 @@
                 </ion-thumbnail>
                 <ion-label>Charger Status</ion-label>
               </ion-item>
+              <!-- will add a green background color to the badge if the statement is true and red if the statement is false -->
               <ion-badge [color]="clientDashTable.charger_ac_failure ? 'danger' : 'success'">
                 {{clientDashTable.charger_ac_failure ? 'YES' : 'NO'}} </ion-badge>
             </ion-item-group>
@@ -114,6 +124,7 @@
                 </ion-thumbnail>
                 <ion-label>Load Status</ion-label>
               </ion-item>
+              <!-- will add a green background color to the badge if the statement is true and red if the statement is false -->
               <ion-badge [color]="clientDashTable.load ?  'danger' : 'success'"> {{clientDashTable.load ? 'no load' :
                 'Ok'}} </ion-badge>
             </ion-item-group>
@@ -125,10 +136,11 @@
                 </ion-thumbnail>
                 <ion-label>Common Alarm</ion-label>
               </ion-item>
+              <!-- will add a green background color to the badge if the statement is true and red if the statement is false -->
               <ion-badge [color]="clientDashTable.common_alarm ? 'danger' : 'success'">{{clientDashTable.common_alarm ?
                 'Yes' : 'No'}} </ion-badge>
             </ion-item-group>
-
+            <!-- todo: link to the fuel history on the main webpage  -->
             <ion-button fill="clear">fuel history</ion-button>
 
           </ion-list>
