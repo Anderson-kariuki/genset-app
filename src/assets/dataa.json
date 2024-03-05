@@ -1,0 +1,47 @@
+[
+    {
+        "account_id": 1,
+        "account_name": "Test 1",
+        "email": "test one",
+        "account_password": "$2a$10$iLnIg/dq08LHZCWcBc15tuYhWUAyuvgwfavtfEdD2vQyeCqTjoTem",
+        "phone_number": "0321888999",
+        "account_creation_date": "2022-09-26T09:26:46Z",
+        "account_modification_date": "2022-09-26T09:26:46Z",
+        "account_modified_by": 1,
+        "account_created_by": 1,
+        "is_active": false,
+        "is_suspended": false,
+        "soft_deleted": false,
+        "alert_type": 0
+    },
+    {
+        "account_id": 2,
+        "account_name": "Cummins C&G",
+        "email": "brian.oguk@cumminscargen.com",
+        "account_password": "$2a$10$49fLGy5UT8creXsUtBZUnOcOuMX4t4qcbxWNboNOGdqdnmNwHuON2",
+        "phone_number": "0722822701",
+        "account_creation_date": "2022-10-04T08:21:27Z",
+        "account_modification_date": "2022-10-04T08:21:27Z",
+        "account_modified_by": 2,
+        "account_created_by": 2,
+        "is_active": false,
+        "is_suspended": false,
+        "soft_deleted": false,
+        "alert_type": 0
+    },
+    {
+        "account_id": 4,
+        "account_name": "sert",
+        "email": "sertsg",
+        "account_password": "$2a$10$6.KK5KjkLYEQsx1GZFgbfuA7FEgx8ETS3A8hXNRc4tBi/lYt44WGS",
+        "phone_number": "shshdh",
+        "account_creation_date": "2023-09-12T12:45:05Z",
+        "account_modification_date": "2023-10-04T10:13:33Z",
+        "account_modified_by": 2,
+        "account_created_by": 2,
+        "is_active": false,
+        "is_suspended": false,
+        "soft_deleted": false,
+        "alert_type": 0
+    }
+]

@@ -4,21 +4,23 @@
     <div class="component-1" style="background-color:#ffffff;">
       <img src="assets/lectrotel_logo.png" alt="Logo">
       <!-- take note of the click events of the various button  -->
-      <button (click)="goToHome()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
-        <ion-icon name="person"></ion-icon>
+      <button id="dataLoading" (click)="goToHome()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
+        <ion-icon name="person" style="color: black;"></ion-icon>
       </button>
-      <button (click)="goToDashboard()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
-        <ion-icon name="home"></ion-icon>
+      <button id="dataLoading" (click)="goToDashboard()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
+        <ion-icon name="home" style="color: black;"></ion-icon>
       </button>
-      <button class="right-aligned" (click)="goToMenu()">
-        <ion-icon name="list" class="dash"></ion-icon>
+      <button id="dataLoading" class="right-aligned" (click)="goToMenu()">
+        <ion-icon name="list" class="dash" style="color: black;"></ion-icon>
       </button>
     </div>
 
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" style="position: relative;">
+
+
+<ion-content style="position: relative;">
   <!-- only show the popup card if the showDashboard value in 1  -->
   <ion-card class="popup" *ngIf="showDashboard">
     <ion-card-header>
@@ -29,22 +31,22 @@
     <ion-card-content>
       <ion-list>
         <!-- take note of the click events of the various button  -->
-        <ion-item (click)="onDashboardClick()">
+        <ion-item id="dataLoading" (click)="onDashboardClick()">
           <ion-icon name="mail"></ion-icon>
           <ion-label class="text-2">Dashboard</ion-label>
         </ion-item>
 
-        <ion-item (click)="onDetailsClick()">
+        <ion-item id="dataLoading" (click)="onDetailsClick()">
           <ion-icon name="expand"></ion-icon>
           <ion-label class="text-2">Details</ion-label>
         </ion-item>
 
-        <ion-item (click)="onAlertsClick()">
+        <ion-item id="dataLoading" (click)="onAlertsClick()">
           <ion-icon name="alert-circle"></ion-icon>
           <ion-label class="text-2">Alerts</ion-label>
         </ion-item>
 
-        <ion-item lines="none" (click)="onLogoutClick()">
+        <ion-item id="dataLoading" lines="none" (click)="onLogoutClick()">
           <ion-icon name="log-out"></ion-icon>
           <ion-label class="text-2">Logout</ion-label>
         </ion-item>
@@ -148,6 +150,6 @@
       </ion-row>
     </ion-card-content>
   </ion-card>
-
-
 </ion-content>
+
+<ion-loading trigger="dataLoading" message="Loading..." [duration]="3000" spinner="circles"></ion-loading>

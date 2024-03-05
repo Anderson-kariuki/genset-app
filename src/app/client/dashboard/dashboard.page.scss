@@ -1,42 +1,3 @@
-ion-item {
-  --padding-start: 0;
-}
-
-// sizing and positioning the logo ion on the toolbar
-.component-1 img {
-  height: 5vh;
-  width: auto;
-  box-shadow: 5px 5px 10px 0px gray;
-  margin-top: 10px;
-  margin-left: 5px;
-}
-
-// subheadings font settings
-.text-1 {
-  text-align: left;
-  vertical-align: top;
-  font-size: 24px;
-  font-family: Outfit;
-  line-height: auto;
-}
-
-// setting up the toolbar, please take note of the stylings also added to the individual elements on the html file they work together
-.component-1 {
-  display: flex;
-  align-content: center;
-  height: 100%;
-  /* Ensures the container expands to full height */
-  padding-bottom: 10px;
-}
-
-/* Specific class for the item to align right */
-.right-aligned {
-  margin-left: auto;
-  background-color:#ffffff; 
-  padding-right: 10px;
-  padding-right: 20px;
-}
-
 .dash {
   margin-left: auto;
 }
@@ -46,23 +7,6 @@ ion-item {
   height: 26px;
   width: 24px;
   background-color: #ffffff;
-}
-
-// common text font setup
-.text-2 {
-  text-align: left;
-  vertical-align: top;
-  font-size: 16px;
-  font-family: Roboto;
-  line-height: auto;
-}
-
-.text-26 {
-  text-align: left;
-  vertical-align: top;
-  font-size: 16px;
-  font-family: Times New Roman;
-  line-height: auto;
 }
 
 ion-badge {
@@ -87,18 +31,4 @@ ion-label {
   flex: 1;
   display: flex;
   justify-content: flex-end;
-}
-
-.line-2 {
-  height: 0px;
-  width: 245px;
-  border: 1px solid rgba(0, 0, 0, 0.6399999856948853);
-}
-
-.popup {
-  width: 245px;
-  position: absolute;
-  // make it display on top of the page
-  z-index: 2;  
-  right: 0; /* Aligns the element to the right edge of its closest positioned ancestor */
 }

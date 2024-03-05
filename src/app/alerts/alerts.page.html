@@ -1,13 +1,102 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" style="background-color: transparent;">
+  <!-- client dashboardpage toolbar, also repeated in the other pages apart frome the home page -->
   <ion-toolbar>
-    <ion-title>alerts</ion-title>
+    <div class="component-1" style="background-color:#ffffff;">
+      <!-- take note of the click events of the various button  -->
+      <img src="assets/lectrotel_logo.png" alt="Logo">
+      <button (click)="goToHome()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
+        <ion-icon name="person" style="color: black;"></ion-icon>
+      </button>
+      <button (click)="goToDashboard()" style="padding-left: 10px; padding-right: 10px; background-color:#ffffff;">
+        <ion-icon name="home" style="color: black;"></ion-icon></button>
+      <button class="right-aligned" (click)="goToMenu()">
+        <ion-icon name="list" class="dash" style="color: black;"></ion-icon>
+      </button>
+    </div>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">alerts</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content style="position: relative;">
+  <!-- only show the popup card if the showDashboard value in 1  -->
+  <ion-card class="popup" *ngIf="showDashboard">
+    <ion-card-header>
+      <!-- this part shows the username and email of the logged account on the popup list display -->
+      <ion-card-title class="text-1">{{data.uName}}</ion-card-title>
+      <ion-card-subtitle class="text-26">{{data.mail}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <!-- take note of the click events of the various button  -->
+        <ion-item (click)="onDashboardClick()">
+          <ion-icon name="mail"></ion-icon>
+          <ion-label class="text-2">Dashboard</ion-label>
+        </ion-item>
+
+        <ion-item (click)="onDetailsClick()">
+          <ion-icon name="expand"></ion-icon>
+          <ion-label class="text-2">Details</ion-label>
+        </ion-item>
+
+        <ion-item (click)="onAlertsClick()">
+          <ion-icon name="alert-circle"></ion-icon>
+          <ion-label class="text-2">Alerts</ion-label>
+        </ion-item>
+
+        <ion-item lines="none" (click)="onLogoutClick()">
+          <ion-icon name="log-out"></ion-icon>
+          <ion-label class="text-2">Logout</ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="line-2"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-select
+        aria-label="Food"
+        placeholder="Select Genset"
+        (ionChange)="handleChange($event)"
+      >
+        <ion-select-option *ngFor="let gens of genNames" [value]="gens.generator_id" >{{ gens.generator_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true">
+    <!--
+      <ion-label>{{hero.id}}</ion-label>
+      <ion-label>{{hero.name}}</ion-label>
+      -->
+    <!-- <ion-item *ngFor="let hero of heroes">
+
+      <ion-button expand="block" [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)" style="max-width: auto ">
+        <ion-label class="badge">{{hero.id}}</ion-label>
+        <ion-label class="name">{{hero.name}}</ion-label>
+      </ion-button>
+    </ion-item> -->
+    <ion-item *ngFor="let m of emails" class="email" lines="true">
+      <ion-row class="ion-align-items-center rowsi">
+        <ion-col size="2">
+          <div class="email-circle" [style.background]="m.color">
+            {{m.alert_id}}
+          </div>
+          <!-- | slice:0:1 -->
+        </ion-col>
+        <ion-col size="7">
+           <ion-label color="dark" [style.font-weight]="!m.read ? 'bold' : ''" 
+           class="ion-text-capitalize ion-text-wrap">
+            Error Code: {{m.alert_code}}
+           </ion-label>
+        </ion-col>
+        <!-- (m.alert_id  | slice:0:50)+'...'  -->
+        <ion-col>
+          <div class="ion-text-right">
+            <p class="date">{{m.creation_date | date:'dd/MM/yyyy hh:mm a'}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
 </ion-content>

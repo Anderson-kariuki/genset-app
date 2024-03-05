@@ -23,7 +23,7 @@
             <div class="rectangle-6">
               <ion-icon class="ion-padding" name="person" color="light"></ion-icon>
             </div>
-            <ion-input class="rectangle-3" placeholder="Email" formControlName="email"> </ion-input>
+            <ion-input class="rectangle-3" placeholder="Email" formControlName="email" autocomplete="on"> </ion-input>
             <!-- to be displayed in an error event  -->
             <span style="color: red; font-size: 10px;" *ngIf="eMail && eMail.invalid && eMail.touched ">
               Field should be valid not be empty
@@ -33,17 +33,18 @@
             <div class="rectangle-5">
               <ion-icon class="ion-padding" name="lock-closed" color="light"></ion-icon>
             </div>
-            <ion-input class="rectangle-4" placeholder="Password" formControlName="user_password" aria-hidden="true"></ion-input>
+            <ion-input class="rectangle-4" placeholder="Password" type={{type}}  formControlName="user_password" aria-hidden="true" autocomplete="on" ></ion-input>
             <div class="rectangle-7">
-              <ion-button fill="clear" slot="end" aria-label="Show/hide" color="light">
-                <ion-icon slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+              <ion-button fill="clear" slot="end" aria-label="Show/hide" color="light" (click)="toggleShowPassword()">
+                <ion-icon *ngIf="hide" slot="icon-only" name="eye" aria-hidden="true"></ion-icon>
+                <ion-icon *ngIf="hid" slot="icon-only" name="eye-off" aria-hidden="true"></ion-icon>
               </ion-button>
             </div>
             <!-- to be displayed in an error event  -->
             <span style="color: red; font-size: 10px;" *ngIf="pWord && pWord.invalid && pWord.touched ">
               Field should be valid not be empty</span>
           </div>
-          <ion-button shape="round" class="button-t-2" color="dark" type="submit" [disabled]="signinForm.invalid"> Login
+          <ion-button id="dataLoading" shape="round" class="button-t-2" color="dark" type="submit" [disabled]="signinForm.invalid"> Login
           </ion-button>
         </ion-card-content>
       </ion-card>
@@ -52,3 +53,5 @@
     <div class="polygon-3"></div>
   </div>
 </ion-content>
+
+<ion-loading trigger="dataLoading" message="Loading..." [duration]="3000" spinner="circles"></ion-loading>

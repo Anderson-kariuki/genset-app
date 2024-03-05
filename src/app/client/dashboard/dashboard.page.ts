@@ -2,6 +2,7 @@ import { AfterContentInit, ChangeDetectorRef, Component, OnInit } from '@angular
 import { ApisService } from '../../services/apis.service';
 import { ListGenerator, UserResponse, ListAccount } from 'src/app/models';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 // this interface is used to store the data to be displayed on my fontend 
 export interface ClientDashboardTable1 {
@@ -50,21 +51,26 @@ export class DashboardPage implements OnInit, AfterContentInit {
   constructor(
     private generatorService: ApisService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private loadingCtrl: LoadingController
   ) { }
 
   ngOnInit(): void {
+    this.showLoading();
+    this.dataLoading = true;
     // Get a list of all the generators ssigned to the client's view
     this.getLoggedinUser();
   }
 
   goToHome() {
     this.showDashboard = 0;
+    this.showLoading();
     this.router.navigate(['']);
   }
 
   goToDashboard() {
     this.showDashboard = 0;
+    this.showLoading();
     this.router.navigate(['client/dashboard']);
   }
   goToMenu() {
@@ -76,21 +82,25 @@ export class DashboardPage implements OnInit, AfterContentInit {
 
   onDashboardClick() {
     this.showDashboard = 0;
+    this.showLoading();
     this.router.navigate(['client/dashboard']);
   }
 
   onDetailsClick() {
     this.showDashboard = 0;
+    this.showLoading();
     this.router.navigate(['details']);
   }
 
   onAlertsClick() {
     this.showDashboard = 0;
+    this.showLoading();
     this.router.navigate(['alerts']);
   }
 
   onLogoutClick() {
     this.showDashboard = 0;
+    this.showLoading();
     this.router.navigate(['']);
   }
 
@@ -111,9 +121,9 @@ export class DashboardPage implements OnInit, AfterContentInit {
     this.user = current.email
     // using this api to ger the user data so that I can extract username from it 
     this.generatorService.getUserData(currentUser.user.user_id).subscribe((result) => {
-      console.log(result);
+      // console.log(result);
       this.name = result.user_name;
-      console.log("name:", this.name);
+      // console.log("name:", this.name);
       // after getting the username I want to store the information to local storage for me to access it in my various pages 
       localStorage.setItem('userInfo', JSON.stringify(this.getUserInfo()));
     })
@@ -209,19 +219,29 @@ export class DashboardPage implements OnInit, AfterContentInit {
 
       },
       error: (error) => {
-        console.log(error);
+        // console.log(error);
         return
       },
       complete: () => {
         this.dataLoading = false;
+        localStorage.setItem('generators', JSON.stringify(this.clientDashTable1));
         // console.log(this.clientDashTable1);
         // this.j = 0;
       },
     })
   }
+  
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+      duration: 2000,
+    });
 
-  ngAfterContentInit(): void {
-    this.changeDetectorRef.detectChanges();
-
+    loading.present();
   }
+
+ngAfterContentInit(): void {
+  this.changeDetectorRef.detectChanges();
+
+}
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApisService } from '../services/apis.service';
@@ -9,9 +9,16 @@ import { Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit, OnChanges{
   data: any;
+  value1: string = '';
+  value2: string = '';
   loading: boolean = false;
+  type: string = 'password';
+  count: number = 0;
+  hid: boolean = false;
+  hide: boolean = true;
+
   signinForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     user_password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -20,6 +27,33 @@ export class HomePage {
     private router: Router,
     private toastr: ToastrService
   ) { }
+
+  ngOnInit(): void {
+    this.count = 0;
+    this.type = 'password';
+    this.count = 0;
+    this.hid = false;
+    this.hide = true;
+    // Getting the logged in user. This data was stored after login in my homepage. The details entered
+    const currentJson = localStorage.getItem('loggedUser');
+    const current: any = currentJson ? JSON.parse(currentJson) : null;
+    this.value1 = current.email;
+    this.value2 = current.user_password;
+  }
+
+  toggleShowPassword() {
+    this.count++;
+
+    if (this.count === 1) {
+      this.type = 'text';
+    } if (this.count > 1) {
+      this.count = 0;
+    } if (this.count === 0) {
+      this.type = 'password';
+    }
+    this.hide = !this.hide;
+    this.hid = !this.hid;
+  }
 
   get eMail() {
     return this.signinForm.get('email')
@@ -68,5 +102,13 @@ export class HomePage {
         // this.loading = false;
       },
     })
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.count = 0;
+    this.type = 'password';
+    this.count = 0;
+    this.hid = false;
+    this.hide = true;
   }
 }

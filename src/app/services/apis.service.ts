@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, BehaviorSubject } from 'rxjs';
-import { ClientDashboard, ListGenerator, ListAccount, UserResponse } from '../models';
+import { ClientDashboard, ListGenerator, ListAccount, UserResponse, ListGeneratorData } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -72,4 +72,15 @@ export class ApisService {
     console.log(httpOptions);
     return httpOptions;
   }
+
+  // function to get generator data of a specific id and avail it to a table 
+  listTransmittedGeneratorData(page_id: number, page_size: number, generator_id: number) {
+    return this.http.get<ListGeneratorData>(`${this.URL}listGeneratorData?page_id=${page_id}&page_size=${page_size}&generator_id=${generator_id}`, this.pasetoHeader());
+  }
+
+  // function to get generator data of a specific id and avail it to a table 
+  listGeneratorAlertsInfo(generator_id: number) {
+    return this.http.get<any>(`${this.URL}getGeneratorAlerts?generator_id=${generator_id}`, this.pasetoHeader());
+  }
+
 }

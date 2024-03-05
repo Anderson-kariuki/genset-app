@@ -66,6 +66,35 @@ export class ListAccount {
 
 }
 
+export class ListGeneratorData {
+
+  constructor(
+    public datetime: Date,
+    public average_current: number,
+    public l1_l2_voltage: number,
+    public line_1_n_voltage: number,
+    public line_1_current: number,
+    public l2_l3_voltage: number,
+    public line_2_n_voltage: number,
+    public line_2_current: number,
+    public line_3_current: number,
+    public l3_l1_voltage: number,
+    public frequency: number,
+    public recent_fault_code: number,
+    public active_fault_type: number,
+    public emergency_stop_status: number,
+    public generator_state: number,
+    public operation_mode: number,
+    public battery_voltage: number,
+    public coolant_temperature: number,
+    public engine_speed: number,
+    public day_fuel_volume: number,
+    public bulk_fuel_tank_volume: number,
+    public no_of_engine_starts: number,
+
+  ) { }
+}
+
 export class ListGenerator {
 
   constructor(
