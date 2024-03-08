@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -23,7 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule, // or NoopAnimationsModule
     ToastrModule.forRoot({
       // toastr global options
-      timeOut: 10000
+      timeOut: 5000
     }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApisService } from '../services/apis.service';
 import { Router } from '@angular/router';
+import { SmsService } from '../services/sms.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,8 @@ export class HomePage implements OnInit, OnChanges{
   })
   constructor(private Login: ApisService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private smsService: SmsService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,18 @@ export class HomePage implements OnInit, OnChanges{
     const current: any = currentJson ? JSON.parse(currentJson) : null;
     this.value1 = current.email;
     this.value2 = current.user_password;
+    // this.sendSMS();
+  }
+
+  sendSMS() {
+    const username = 'AndersonK'
+    const to = '+254742394144'; // The recipient's number
+    const message = 'Lectrotel about to talk';
+    this.smsService.sendSMS(username, to, message).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.error(error);
+    });
   }
 
   toggleShowPassword() {
