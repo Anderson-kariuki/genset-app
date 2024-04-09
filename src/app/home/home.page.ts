@@ -10,7 +10,7 @@ import { SmsService } from '../services/sms.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnChanges{
+export class HomePage implements OnInit, OnChanges {
   data: any;
   value1: string = '';
   value2: string = '';
@@ -36,12 +36,21 @@ export class HomePage implements OnInit, OnChanges{
     this.count = 0;
     this.hid = false;
     this.hide = true;
+    // this.sendSMS();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.count = 0;
+    this.type = 'password';
+    this.count = 0;
+    this.hid = false;
+    this.hide = true;
+
     // Getting the logged in user. This data was stored after login in my homepage. The details entered
     const currentJson = localStorage.getItem('loggedUser');
     const current: any = currentJson ? JSON.parse(currentJson) : null;
     this.value1 = current.email;
     this.value2 = current.user_password;
-    // this.sendSMS();
   }
 
   sendSMS() {
@@ -116,13 +125,5 @@ export class HomePage implements OnInit, OnChanges{
         // this.loading = false;
       },
     })
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.count = 0;
-    this.type = 'password';
-    this.count = 0;
-    this.hid = false;
-    this.hide = true;
   }
 }
